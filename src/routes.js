@@ -41,14 +41,14 @@ var routes = [
     component: Icons,
     layout: "/admin"
   },
-  {
-    path: "/mares",
-    name: "Mares",
-    rtlName: "الرموز",
-    icon: "tim-icons icon-heart-2",
-    component: Mares,
-    layout: "/admin"
-  },
+  //{
+  //  path: "/mares",
+   // name: "Mares",
+   // rtlName: "الرموز",
+    //icon: "tim-icons icon-heart-2",
+   // component: Mares,
+  //  layout: "/admin"
+  //},
   {
     path: "/notifications",
     name: "Notifications",
@@ -57,13 +57,13 @@ var routes = [
     component: Notifications,
     layout: "/admin"
   },
-  {
-    path: "/typography",
-    name: "Logs",
-    rtlName: "طباعة",
-    icon: "tim-icons icon-align-center",
-    component: Typography,
-    layout: "/admin"
-  }
+  //{
+   // path: "/typography",
+  //  name: "Logs",
+  //  rtlName: "طباعة",
+   // icon: "tim-icons icon-align-center",
+   // component: Typography,
+   // layout: "/admin"
+ // }
 ];
 export default routes;

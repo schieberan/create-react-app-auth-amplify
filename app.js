@@ -1,45 +1,28 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const graphqlHttp = require('express-graphql');
-const mongoose = require('mongoose');
-
-const graphQlSchema = require('amplify/backend/api/neighapi/schema.graphql');
-const graphQlResolvers = require('amplify/backend/api/neighapi/resolvers/mares.js');
-
+const express = require("express");
+const graphqlHTTP = require("express-graphql");
+const mongoose = require("mongoose");
+const Schema = require('./api/schema/schema.js');
+const cors = require("cors");
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(cors());
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200);
-  }
-  next();
-});
-
-
-app.use(
-    '/graphql',
-    graphqlHttp({
-      schema: graphQlSchema,
-      rootValue: graphQlResolvers,
-      graphiql: true
-    })
-  );
-
+mongoose.Promise = global.Promise;
 mongoose
-  .connect(
-    `mongodb+srv://${process.env.MONGO_USER}:${
-      process.env.MONGO_PASSWORD
-    }@cluster0-ntrwp.mongodb.net/${process.env.MONGO_DB}?retryWrites=true`
-  )
+  .connect(`mongodb://schiebs:pZsxv0MKYZ4fhOMZ@cluster0-shard-00-00.025ux.mongodb.net:27017,cluster0-shard-00-01.025ux.mongodb.net:27017,cluster0-shard-00-02.025ux.mongodb.net:27017/database?ssl=true&replicaSet=atlas-av4vev-shard-0&authSource=admin&retryWrites=true&w=majority`)
   .then(() => {
+    console.log('connected to database');
     app.listen(8000);
   })
   .catch(err => {
     console.log(err);
   });
+
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema: Schema,
+    graphiql: true
+  })
+);

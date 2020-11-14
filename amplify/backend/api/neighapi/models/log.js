@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const LogSchema = new Schema({
-  mare: {
-    type: Schema.Types.ObjectId,
-    ref: 'mare'
-  },
   likes: { type: Number, default: 0 },
   content: { type: String }
 });

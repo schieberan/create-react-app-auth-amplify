@@ -14,17 +14,7 @@ const LogType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLID },
     likes: { type: GraphQLInt },
-    content: { type: GraphQLString },
-    log: {
-      type: require('./mare_type'),
-      resolve(parentValue) {
-        return Log.findById(parentValue).populate('log')
-          .then(log => {
-            console.log(log)
-            return log.log
-          });
-      }
-    }
+    content: { type: GraphQLString }
   })
 });
 
