@@ -117,7 +117,7 @@ class Admin extends React.Component {
             bgColor={this.state.backgroundColor}
             logo={{
               outterLink: "https://www.creative-tim.com/",
-              text: "Allison Schieber",
+              text: "Foal Watch: 2020",
               imgSrc: logo
             }}
             toggleSidebar={this.toggleSidebar}
@@ -127,12 +127,7 @@ class Admin extends React.Component {
             ref="mainPanel"
             data={this.state.backgroundColor}
           >
-            <AdminNavbar
-              {...this.props}
-              brandText={this.getBrandText(this.props.location.pathname)}
-              toggleSidebar={this.toggleSidebar}
-              sidebarOpened={this.state.sidebarOpened}
-            />
+          
             <Switch>
               {this.getRoutes(routes)}
               <Redirect from="*" to="/admin/dashboard"/>

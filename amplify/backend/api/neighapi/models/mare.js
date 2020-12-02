@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const mareSchema = new Schema({
+const MareSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -11,14 +11,18 @@ const mareSchema = new Schema({
     type: String,
     required: true
   },
-  dueDate: {
+  date: {
     type: String,
     required: true
   },
-  status: {
+  time: {
     type: String,
+    required: true
+  },
+  stat: {
+    type: String, 
     required: true
   }
 });
 
-module.exports = mongoose.model('Mare', mareSchema);
+module.exports = mongoose.model('mare', MareSchema);
